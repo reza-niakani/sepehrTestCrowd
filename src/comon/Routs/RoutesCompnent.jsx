@@ -13,6 +13,8 @@ import FinancialReport from 'pages/FinancialReport/FinancialReport';
 import UserInfo from 'pages/UserInfo/UserInfo';
 import RequestForFinancing from 'pages/RequestForFinancing/RequestForFinancing';
 import AboutUs from 'pages/AboutUs/AboutUs';
+import ContactUs from 'pages/ContactUs/ContactUs';
+import UserGuide from 'pages/UserGuide/UserGuide';
 
 const RoutsComponent = () => {
   return (
@@ -35,6 +37,8 @@ const RoutsComponent = () => {
         {/* globaly rout */}
         <Route path="/" exact element={<HomePage />} />
         <Route path="/about_us" exact element={<AboutUs />} />
+        <Route path="/contact_us" exact element={<ContactUs />} />
+        <Route path="/user_guide" exact element={<UserGuide />} />
         <Route path="/login" exact element={<EnteringMainCompo />} />
         <Route path="/plan_detail/:id" exact element={<PlanDetail />} />
         <Route path="/all_plans" exact element={<AllPlans />} />
