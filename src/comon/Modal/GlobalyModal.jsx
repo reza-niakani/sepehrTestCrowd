@@ -2,6 +2,7 @@
 import { Dialog, Transition } from '@headlessui/react';
 import DataContext from 'comon/context/MainContext';
 import Status from 'comon/GlobalyComponnetsUsed/Status';
+import WorkHistory from 'pages/AboutUs/component/WorkHistory';
 import BuyUnit from 'pages/BuyUnit/BuyUnit';
 import RegisterFinancialReport from 'pages/RegisterFinancialReport/RegisterFinancialReport';
 import RegisterPlan from 'pages/RegisterPlan/RegisterPlan';
@@ -22,6 +23,8 @@ export default function GlobalyModal() {
         return <RegisterPlan />;
       case 'registerFinancialReport':
         return <RegisterFinancialReport />;
+      case 'workHistory':
+        return <WorkHistory data={modal?.data} />;
       default:
         break;
     }

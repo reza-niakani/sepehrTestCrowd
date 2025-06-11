@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import InlineSVG from 'react-inlinesvg';
 import verify from 'asset/Pictures/Icons/userVerifyTemplate.svg';
 import useDeviceDetection from 'comon/DeviceDetector/useDeviceDetection';
-import { executeMemebers } from './component/Enum';
+import { BoardMember, executeMemebers } from './component/Enum';
 import person from 'asset/Pictures/Icons/personIcon.png';
+import DataContext from 'comon/context/MainContext';
 
 function AboutUs() {
+  const { setModal } = useContext(DataContext);
+
   const isMobile = useDeviceDetection();
+  const showHistoryFunction = (data) => {
+    setModal({ type: 'workHistory', data: data });
+  };
 
   return (
     <div className="w-full flex flex-col items-center justify-start  gap-y-20">
@@ -57,6 +63,16 @@ function AboutUs() {
           و متوسط در کنار آن‌ها بوده و با ایجاد سابقه اعتباری از طریق تامین مالی جمعی امکان تامین
           مالی از طریق انتشار اوراق را برای آن‌ها فراهم می‌نماید.
         </p>
+        <div className="w-auto flex flex-col items-start gap-y-2 ">
+          <div className="w-auto flex justify-start items-center  gap-x-5 lg:text-xl text-sm font-bold  text-white ">
+            <span className="whitespace-nowrap  ">شناسه ملی سپهر:</span>
+            <span className="font-normal">۱۰۳۲۰۰۸۹۹۰ </span>
+          </div>
+          <div className="w-auto flex justify-start items-center  gap-x-5 lg:text-xl text-sm font-bold  text-white ">
+            <span className="whitespace-nowrap  ">شماره ثبت سپهر: </span>
+            <span className="font-normal">۴۱۹۲۹۲ </span>
+          </div>
+        </div>
       </div>
       <div className=" w-[50%] flex flex-col items-center justify-center h-auto gap-y-10 lg:pt-28 ">
         {' '}
@@ -65,11 +81,23 @@ function AboutUs() {
           اعضای هیات مدیره{' '}
         </span>
         <div className="w-full max-w-[1440px]  flex flex-wrap items-center justify-center gap-8  ">
-          {executeMemebers?.map((item, index) => (
+          {BoardMember?.map((item, index) => (
             <div
               key={index}
-              className="lg:w-[500px] w-[90%]  min-h-[170px] flex  justify-center gap-x-5 ">
-              <img src={person} className="w-[65px] h-[65px] rounded-full  " />
+              onClick={() => showHistoryFunction(item?.WorkHistory)}
+              className="lg:w-[500px] hover:drop-shadow-lg cursor-pointer  w-[90%]  min-h-[140px] flex items-center justify-center gap-x-5  drop-shadow-md rounded-lg  bg-white">
+              <div className="w-[95%] flex items-center justify-between ">
+                {' '}
+                <img src={item?.pic} className="w-[110px] h-[110px] rounded-full  " />
+                <div className="w-[70%] flex flex-col items-start justify-center gap-y-3 h-auto">
+                  <span className="w-auto text-start text-lg font-bold text-accent-1000">
+                    {item?.name}
+                  </span>
+                  <span className="w-auto text-start text-base font-normal text-accent-1000">
+                    {item?.posotion}
+                  </span>
+                </div>
+              </div>
             </div>
           ))}
         </div>
