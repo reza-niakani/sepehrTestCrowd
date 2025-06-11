@@ -60,7 +60,7 @@ export default function GlobalyModal() {
                 leave="ease-in duration-200"
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95">
-                <Dialog.Panel className="lg:w-[30%]  max-w-[1440px] w-[95%] min-h-[500px] flex justify-start items-center flex-col transform   overflow-y-hidden  z-[10000]    align-middle  transition-all">
+                <Dialog.Panel className="lg:min-w-[30%]  max-w-[1440px] w-[95%] min-h-[500px] flex justify-start items-center flex-col transform   overflow-y-hidden  z-[10000]    align-middle  transition-all">
                   {ComponentHandler()}
                 </Dialog.Panel>
               </Transition.Child>

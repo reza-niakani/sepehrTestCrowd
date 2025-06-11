@@ -3,6 +3,9 @@ import mrkhalili from 'asset/Pictures/persons/mrkhalili.jfif';
 import mrahmadi from 'asset/Pictures/persons/mrahmadi.jfif';
 import mrzehtabian from 'asset/Pictures/persons/mrzehtabian.jfif';
 import mrnazari from 'asset/Pictures/persons/mrnazari.jfif';
+import profile from 'asset/Pictures/Icons/profileplus.png';
+import docSearch from 'asset/Pictures/Icons/docSearch.png';
+import chart from 'asset/Pictures/Icons/chart.png';
 
 export const BoardMember = [
   {
@@ -96,4 +99,22 @@ export const executeMemebers = [
       'کارشناس توسعه تکنولوژی شرکت تامین سرمایه سپهر'
     ]
   }
+];
+
+export const registrationInfo = [
+  { title: 'نام شرکت', data: 'تامین سرمایه سپهر' },
+  { title: 'نوع شحصیت حقوقی', data: ' سهامی خاص' },
+  { title: 'شماره ثبت', data: '419292' },
+  { title: 'شناسه ملی', data: '10320708990' },
+  { title: 'شماره ثبت نزد سازمان به عنوان نهاد مالی', data: '۱۰۹۹۰' },
+  { title: 'تاریخ تاسیس شرکت ', data: '1390/09/06' }
+];
+
+export const advertismentData = [
+  {
+    text: 'ارائه مسیر سریع، شفاف و مقرون‌به‌صرفه برای جذب سرمایه‌گذاران خرد و کلان؛',
+    icon: profile
+  },
+  { text: 'پالایش دقیق طرح‌ها از نظر اقتصادی، حقوقی و اجرایی؛', icon: docSearch },
+  { text: 'حمایت همه‌جانبه از کارآفرینان در مسیر رشد کسب‌وکار.', icon: chart }
 ];

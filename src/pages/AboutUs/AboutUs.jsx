@@ -1,11 +1,10 @@
 import React, { useContext } from 'react';
-import InlineSVG from 'react-inlinesvg';
-import verify from 'asset/Pictures/Icons/userVerifyTemplate.svg';
+import document from 'asset/Pictures/Icons/documentcertificate.png';
 import useDeviceDetection from 'comon/DeviceDetector/useDeviceDetection';
-import { BoardMember, executeMemebers } from './component/Enum';
+import { advertismentData, BoardMember, executeMemebers, registrationInfo } from './component/Enum';
 import person from 'asset/Pictures/Icons/personIcon.png';
 import DataContext from 'comon/context/MainContext';
-
+import card from 'asset/Pictures/Icons/card.png';
 function AboutUs() {
   const { setModal } = useContext(DataContext);
 
@@ -32,17 +31,15 @@ function AboutUs() {
           </p>
         </div>
         <div className="w-full flex flex-wrap justify-center gap-12 items-center max-w-[1440px] ">
-          {[
-            'ارائه مسیر سریع، شفاف و مقرون‌به‌صرفه برای جذب سرمایه‌گذاران خرد و کلان؛',
-            'پالایش دقیق طرح‌ها از نظر اقتصادی، حقوقی و اجرایی؛',
-            'حمایت همه‌جانبه از کارآفرینان در مسیر رشد کسب‌وکار.'
-          ]?.map((item, index) => (
+          {advertismentData?.map((item, index) => (
             <div
               key={index}
               style={{ boxShadow: '0px 2px 10px 0px rgba(1, 182, 155, 0.1)' }}
-              className="lg:w-[270px] w-[90%] rounded-large h-[250px] flex  flex-col items-center gap-y-5 justify-center bg-white ">
-              <InlineSVG src={verify} />
-              <p className="w-[80%] text-center text-base text-gray-600  ">{item}</p>
+              className="lg:w-[270px]  w-[90%] rounded-large h-[250px] flex  flex-col items-center gap-y-5 justify-center bg-white ">
+              <img src={item?.icon} />
+              <p className="w-[90%] lg:max-w-[270px] text-center text-base text-gray-600  whitespace-pre-wrap ">
+                {item?.text}
+              </p>
             </div>
           ))}
         </div>
@@ -63,22 +60,22 @@ function AboutUs() {
           و متوسط در کنار آن‌ها بوده و با ایجاد سابقه اعتباری از طریق تامین مالی جمعی امکان تامین
           مالی از طریق انتشار اوراق را برای آن‌ها فراهم می‌نماید.
         </p>
-        <div className="w-auto flex flex-col items-start gap-y-2 ">
-          <div className="w-auto flex justify-start items-center  gap-x-5 lg:text-xl text-sm font-bold  text-white ">
-            <span className="whitespace-nowrap  ">شناسه ملی سپهر:</span>
+        {/* <div className="w-auto flex flex-col items-start gap-y-2 ">
+          <div className="w-auto flex justify-start items-center  gap-x-5 lg:text-base text-sm font-medium  text-white ">
+            <span className="whitespace-nowrap  ">شناسه ملی تامین سرمایه سپهر:</span>
             <span className="font-normal">۱۰۳۲۰۰۸۹۹۰ </span>
           </div>
-          <div className="w-auto flex justify-start items-center  gap-x-5 lg:text-xl text-sm font-bold  text-white ">
-            <span className="whitespace-nowrap  ">شماره ثبت سپهر: </span>
+          <div className="w-auto flex justify-start items-center  gap-x-5 lg:text-base text-sm font-medium  text-white ">
+            <span className="whitespace-nowrap  ">شماره ثبت تامین سرمایه سپهر: </span>
             <span className="font-normal">۴۱۹۲۹۲ </span>
           </div>
-        </div>
+        </div> */}
       </div>
-      <div className=" w-[50%] flex flex-col items-center justify-center h-auto gap-y-10 lg:pt-28 ">
+      <div className=" w-full flex flex-col items-center justify-center h-auto gap-y-10 lg:pt-28 ">
         {' '}
         <span className="lg:text-4xl text-lg  font-extrabold text-accent-1000  w-full text-center ">
           {' '}
-          اعضای هیات مدیره{' '}
+          اعضای هیات مدیره شرکت تامین سرمایه سپهر
         </span>
         <div className="w-full max-w-[1440px]  flex flex-wrap items-center justify-center gap-8  ">
           {BoardMember?.map((item, index) => (
@@ -88,18 +85,112 @@ function AboutUs() {
               className="lg:w-[500px] hover:drop-shadow-lg cursor-pointer  w-[90%]  min-h-[140px] flex items-center justify-center gap-x-5  drop-shadow-md rounded-lg  bg-white">
               <div className="w-[95%] flex items-center justify-between ">
                 {' '}
-                <img src={item?.pic} className="w-[110px] h-[110px] rounded-full  " />
+                <img src={item?.pic} className="w-[100px] h-[100px] rounded-full  " />
                 <div className="w-[70%] flex flex-col items-start justify-center gap-y-3 h-auto">
                   <span className="w-auto text-start text-lg font-bold text-accent-1000">
                     {item?.name}
                   </span>
-                  <span className="w-auto text-start text-base font-normal text-accent-1000">
+                  <span className="w-auto text-start text-sm font-normal text-accent-1000">
                     {item?.posotion}
                   </span>
                 </div>
               </div>
             </div>
           ))}
+        </div>
+      </div>
+      <div className=" w-full flex flex-col items-center justify-center h-auto gap-y-10 lg:pt-28 ">
+        {' '}
+        <span className="lg:text-4xl text-lg  font-extrabold text-accent-1000  w-full text-center ">
+          {' '}
+          اعضای تیم اجرایی سپهر کراد{' '}
+        </span>
+        <div className="w-full max-w-[1440px]  flex flex-wrap items-center justify-center gap-8  ">
+          {executeMemebers?.map((item, index) => (
+            <div
+              key={index}
+              onClick={() => showHistoryFunction(item?.WorkHistory)}
+              className="lg:w-[400px] hover:drop-shadow-lg cursor-pointer  w-[90%]  min-h-[120px] flex items-center justify-center gap-x-5  drop-shadow-md rounded-lg  bg-white">
+              <div className="w-[95%] flex items-center justify-between ">
+                {' '}
+                <img src={person} className="w-[70px] h-[70px] rounded-full  " />
+                <div className="w-[75%] flex flex-col items-start justify-center gap-y-3 h-auto">
+                  <span className="w-auto text-start text-lg font-bold text-accent-1000">
+                    {item?.name}
+                  </span>
+                  <span className="w-auto text-start text-sm font-normal text-accent-1000">
+                    {item?.posotion}
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="  bg-[url('asset/Pictures/BackGround/registrationBg.svg')]  bg-cover w-screen  bg-no-repeat  bg-center h-[900px] flex flex-col justify-center   items-center gap-y-28 lg:py-0 py-6  ">
+        {' '}
+        <span className="lg:text-4xl text-lg  font-extrabold text-accent-1000  w-full text-center ">
+          {' '}
+          مشخصات ثبتی شرکت{' '}
+        </span>
+        <div className="w-[50%] max-w-[1440px] flex flex-wrap justify-center gap-12 items-center  ">
+          {registrationInfo?.map((item, index) => (
+            <div
+              key={index}
+              style={{ boxShadow: '0px 2px 10px 0px rgba(1, 182, 155, 0.1)' }}
+              className="lg:w-[270px] w-[90%] rounded-large h-[150px] flex  flex-col items-center gap-y-5 justify-center bg-white ">
+              {/* <InlineSVG src={verify} /> */}
+              <span className="w-[80%]  text-center whitespace-normal text-base font-bold text-gray-600  ">
+                {item?.title}
+              </span>
+              <span className="w-[80%] whitespace-pre  text-center text-[15px]  text-gray-600  ">
+                {' '}
+                {item?.data}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="w-full max-w-[1440px] flex flex-col justify-center gap-y-28 lg:py-0 py-6 items-center  ">
+        <span className="lg:text-4xl text-lg  font-extrabold text-accent-1000  w-full text-center ">
+          {' '}
+          مجوز تامین مالی جمعی سپهر کراد
+        </span>
+        <div className="  w-[235px]  h-[300px] bg-[#F6F8FA] rounded-lg flex flex-col justify-center  hover:shadow-lg cursor-pointer     items-center   ">
+          <img src={document} />
+          <span className="text-base font-bold text-gray-700 w-full text-center  ">
+            مجوز فعالیت سبدگردانی
+          </span>
+          <a
+            href="https://ifb.ir/Finstars/AllCrowdFundingAgents.aspx"
+            target="_blank"
+            className="underline-offset-8 hover:underline  text-accent-1000 text-base text-center "
+            rel="noreferrer">
+            {' '}
+            مشاهده
+          </a>
+        </div>
+      </div>
+      <div
+        className="lg:w-[1028px]  rounded-[16px] h-[215px] justify-center items-center  flex "
+        style={{
+          background:
+            ' radial-gradient(106.05% 163.87% at 0% 0%, #F0F6FF 0%, #67E8D5 25.31%, #1AA1A8 55.69%, #01B69B 100%)'
+        }}>
+        <div className="lg:w-[87%] w-[95%] min-h-[115px] flex bg-white rounded-lg  p-4 items-start justify-center gap-3  ">
+          <img src={card} />
+
+          <div className="w-[80%] flex flex-col justify-center items-start gap-y-5">
+            <span className="w-auto lg:text-lg text-base font-bold">اطلاعات حساب سپهر کراد</span>
+            <div className="w-full flex flex-wrap items-center justify-start gap-4  font-medium text-base">
+              <span>بانک: صادرات ایران</span>
+              <span>شعبه: شعبه ممتاز مشهد</span>
+              <span>شماره حساب: 0340360341006</span>
+              <span>شماره شبا: IR100190000000340360341006</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
