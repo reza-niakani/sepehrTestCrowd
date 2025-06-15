@@ -1,14 +1,29 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import document from 'asset/Pictures/Icons/documentcertificate.png';
 import useDeviceDetection from 'comon/DeviceDetector/useDeviceDetection';
 import { advertismentData, BoardMember, executeMemebers, registrationInfo } from './component/Enum';
 import person from 'asset/Pictures/Icons/personIcon.png';
 import DataContext from 'comon/context/MainContext';
 import card from 'asset/Pictures/Icons/card.png';
+
 function AboutUs() {
   const { setModal } = useContext(DataContext);
+  const [copyStatus, setCopyStatus] = useState({});
 
   const isMobile = useDeviceDetection();
+
+  useEffect(() => {
+    setCopyStatus({});
+  }, []);
+
+  const handleCopy = (type, value) => {
+    setCopyStatus((prev) => ({ ...prev, [type]: true }));
+    navigator.clipboard.writeText(value);
+    setTimeout(() => {
+      setCopyStatus((prev) => ({ ...prev, [type]: false }));
+    }, 2500);
+  };
+
   const showHistoryFunction = (data) => {
     setModal({ type: 'workHistory', data: data });
   };
@@ -46,7 +61,7 @@ function AboutUs() {
       </div>
       {/* company info */}
       {/* crowdfunding introduction */}
-      <div className="lg:w-[70%] w-[95%] flex lg:p-10 py-4 px-3 justify-center   gap-y-10  flex-col  items-start lg:bg-[url('asset/Pictures/BackGround/handBgDesktop.svg')] text-white lg:h-[480px] h-[700px] rounded-large bg-[url('asset/Pictures/BackGround/handBgmobile.svg')] bg-cover lg:max-w-[1400px] bg-no-repeat  bg-center  ">
+      <div className="lg:w-[70%] w-[95%] flex lg:p-10 py-10 px-3 lg:justify-center justify-start    gap-y-10  flex-col  items-start lg:bg-[url('asset/Pictures/BackGround/handBgDesktop.svg')] text-white lg:h-[480px] h-[700px] rounded-large bg-[url('asset/Pictures/BackGround/handBgmobile.svg')] bg-cover lg:max-w-[1400px] bg-no-repeat  bg-center  ">
         <span className="w-full lg:w-[90%] flex flex-col lg:text-3xl  text-lg font-black text-start  items-start  justify-start h-auto lg:gap-y-4 ">
           سپهر کراد
         </span>
@@ -83,14 +98,14 @@ function AboutUs() {
               key={index}
               onClick={() => showHistoryFunction(item?.WorkHistory)}
               className="lg:w-[500px] hover:drop-shadow-lg cursor-pointer  w-[90%]  min-h-[140px] flex items-center justify-center gap-x-5  drop-shadow-md rounded-lg  bg-white">
-              <div className="w-[95%] flex items-center justify-between ">
+              <div className="w-[95%] flex items-center justify-between gap-x-3 ">
                 {' '}
                 <img src={item?.pic} className="w-[100px] h-[100px] rounded-full  " />
-                <div className="w-[70%] flex flex-col items-start justify-center gap-y-3 h-auto">
-                  <span className="w-auto text-start text-lg font-bold text-accent-1000">
+                <div className="w-[70%] flex flex-col items-start justify-center gap-y-3 h-auto ">
+                  <span className="w-auto text-start lg:text-lg text-base  font-bold  text-accent-1000">
                     {item?.name}
                   </span>
-                  <span className="w-auto text-start text-sm font-normal text-accent-1000">
+                  <span className="w-auto text-start lg:text-sm text-xs font-normal text-accent-1000">
                     {item?.posotion}
                   </span>
                 </div>
@@ -115,10 +130,10 @@ function AboutUs() {
                 {' '}
                 <img src={person} className="w-[70px] h-[70px] rounded-full  " />
                 <div className="w-[75%] flex flex-col items-start justify-center gap-y-3 h-auto">
-                  <span className="w-auto text-start text-lg font-bold text-accent-1000">
+                  <span className="w-auto text-start lg:text-lg text-base  font-bold text-accent-1000">
                     {item?.name}
                   </span>
-                  <span className="w-auto text-start text-sm font-normal text-accent-1000">
+                  <span className="w-auto text-start lg:text-sm text-xs font-normal text-accent-1000">
                     {item?.posotion}
                   </span>
                 </div>
@@ -134,17 +149,17 @@ function AboutUs() {
           {' '}
           مشخصات ثبتی شرکت{' '}
         </span>
-        <div className="w-[50%] max-w-[1440px] flex flex-wrap justify-center gap-12 items-center  ">
+        <div className="lg:w-[50%] w-full max-w-[1440px] flex flex-wrap justify-center gap-12 items-center  ">
           {registrationInfo?.map((item, index) => (
             <div
               key={index}
               style={{ boxShadow: '0px 2px 10px 0px rgba(1, 182, 155, 0.1)' }}
-              className="lg:w-[270px] w-[90%] rounded-large h-[150px] flex  flex-col items-center gap-y-5 justify-center bg-white ">
+              className="lg:w-[270px] w-[40%] rounded-large h-[150px] flex  flex-col items-center gap-y-5 justify-center bg-white ">
               {/* <InlineSVG src={verify} /> */}
-              <span className="w-[80%]  text-center whitespace-normal text-base font-bold text-gray-600  ">
+              <span className="w-[80%]  text-center whitespace-normal lg:text-base text-sm  font-bold text-gray-600  ">
                 {item?.title}
               </span>
-              <span className="w-[80%] whitespace-pre  text-center text-[15px]  text-gray-600  ">
+              <span className="w-[80%] whitespace-pre  text-center lg:text-[15px] text-sm   text-gray-600  ">
                 {' '}
                 {item?.data}
               </span>
@@ -153,7 +168,7 @@ function AboutUs() {
         </div>
       </div>
 
-      <div className="w-full max-w-[1440px] flex flex-col justify-center gap-y-28 lg:py-0 py-6 items-center  ">
+      <div className="w-full max-w-[1440px] flex flex-col justify-center lg:gap-y-28 gap-y-10 items-center  ">
         <span className="lg:text-4xl text-lg  font-extrabold text-accent-1000  w-full text-center ">
           {' '}
           مجوز تامین مالی جمعی سپهر کراد
@@ -174,21 +189,36 @@ function AboutUs() {
         </div>
       </div>
       <div
-        className="lg:w-[1028px]  rounded-[16px] h-[215px] justify-center items-center  flex "
+        className="lg:w-[1028px]  w-[95%] rounded-[16px] lg:h-[215px] py-10 h-auto justify-center items-center  flex "
         style={{
           background:
             ' radial-gradient(106.05% 163.87% at 0% 0%, #F0F6FF 0%, #67E8D5 25.31%, #1AA1A8 55.69%, #01B69B 100%)'
         }}>
-        <div className="lg:w-[87%] w-[95%] min-h-[115px] flex bg-white rounded-lg  p-4 items-start justify-center gap-3  ">
-          <img src={card} />
+        <div className="lg:w-[87%] w-[95%] lg:min-h-[115px] flex bg-white rounded-lg  p-4 items-start justify-center gap-3  ">
+          <img src={card} className="lg:block hidden" />
 
-          <div className="w-[80%] flex flex-col justify-center items-start gap-y-5">
+          <div className="lg:w-[80%] w-full flex flex-col justify-center items-start gap-y-5">
             <span className="w-auto lg:text-lg text-base font-bold">اطلاعات حساب سپهر کراد</span>
             <div className="w-full flex flex-wrap items-center justify-start gap-4  font-medium text-base">
               <span>بانک: صادرات ایران</span>
               <span>شعبه: شعبه ممتاز مشهد</span>
-              <span>شماره حساب: 0340360341006</span>
-              <span>شماره شبا: IR100190000000340360341006</span>
+              <span>
+                شماره حساب:{' '}
+                <button
+                  onClick={() => handleCopy('accountNumber', '0340360341006')}
+                  className="w-auto text-nowrap text-accent-1000 hover:font-bold hover:underline underline-offset-4   ">
+                  {copyStatus?.accountNumber == true ? 'کپی شد !' : '0340360341006'}
+                </button>
+              </span>
+              <span>
+                شماره شبا:{' '}
+                <button
+                  onClick={() => handleCopy('iban', 'IR100190000000340360341006')}
+                  className="w-auto text-nowrap text-accent-1000 hover:font-bold hover:underline underline-offset-4   ">
+                  {' '}
+                  {copyStatus?.iban == true ? 'کپی شد !' : 'IR100190000000340360341006'}
+                </button>
+              </span>
             </div>
           </div>
         </div>

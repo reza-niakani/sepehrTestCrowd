@@ -6,9 +6,6 @@ import InlineSVG from 'react-inlinesvg';
 import useDeviceDetection from 'comon/DeviceDetector/useDeviceDetection';
 import mainLogo from 'asset/Pictures/logo/CompanyMainLogo.svg';
 import alert from 'asset/Pictures/Icons/alertcircle.svg';
-import Instagram from 'asset/Pictures/Icons/Instagram.svg';
-import telegram from 'asset/Pictures/Icons/telegram.svg';
-import linkedin from 'asset/Pictures/Icons/LinkedIn.svg';
 import AccordionFaqModel from 'comon/Accordion/AccordionFaqModel';
 
 function Footer() {
@@ -230,7 +227,7 @@ function Footer() {
             <InlineSVG src={alert} />
             تمامی حقوق مادی و معنوی متعلق به شرکت سبدگردانی ویستا می باشد.
           </span>
-          <div className="w-auto flex lg:justify-end justify-center gap-x-3  items-center  lg:order-2 order-1 ">
+          {/* <div className="w-auto flex lg:justify-end justify-center gap-x-3  items-center  lg:order-2 order-1 ">
             <a href="https://www.instagram.com/vista.amc" target="_blank" rel="noreferrer">
               <InlineSVG src={Instagram} />
             </a>{' '}
@@ -243,7 +240,7 @@ function Footer() {
               rel="noreferrer">
               <InlineSVG src={linkedin} />
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>
